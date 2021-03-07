@@ -1,1 +1,2 @@
-# c-project-layout
+# C Project Layout
+
