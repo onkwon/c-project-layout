@@ -1,0 +1,48 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "CROSS_COMPILE=arm-none-eabi make",
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "clean",
+            "type": "shell",
+            "command": "make clean",
+            "problemMatcher": []
+        },
+        {
+            "label": "flash",
+            "type": "shell",
+            "command": "make flash",
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "flash_softdevice",
+            "type": "shell",
+            "command": "make flash_softdevice",
+            "problemMatcher": []
+        },
+        {
+            "label": "sdk_config",
+            "type": "shell",
+            "command": "make sdk_config",
+            "problemMatcher": []
+        },
+        {
+            "label": "erase",
+            "type": "shell",
+            "command": "make erase",
+            "problemMatcher": []
+        }
+    ]
+}

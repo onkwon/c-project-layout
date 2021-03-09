@@ -1,0 +1,23 @@
+{
+    "configurations": [
+        {
+            "name": "nRF52",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${env:GNU_GCC}/arm-none-eabi/include",
+                "${env:nRF_SDK}/modules/**",
+                "${env:nRF_SDK}/components/**"
+            ],
+            "defines": [],
+            "macFrameworkPath": [
+                "/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/System/Library/Frameworks"
+            ],
+            "compilerPath": "/usr/local/opt/llvm/bin/clang",
+            //"compilerPath": "${env:GNU_GCC}/bin/arm-none-eabi-gcc",
+            "cStandard": "c99",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "clang-x64"
+        }
+    ],
+    "version": 4
+}
