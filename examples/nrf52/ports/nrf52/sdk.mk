@@ -54,7 +54,9 @@ INCS += \
 	$(SDK_ROOT)/modules/nrfx/mdk \
 	$(SDK_ROOT)/modules/nrfx/hal \
 	$(SDK_ROOT)/modules/nrfx \
-	$(BASEDIR)/ports/nrf52
+	$(BASEDIR)/ports/nrf52 \
+	$(BASEDIR)/include \
+	$(BASEDIR)/src
 
 CFLAGS += \
 	-mcpu=cortex-m4 \

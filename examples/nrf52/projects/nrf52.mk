@@ -1,4 +1,4 @@
-SRCDIRS += src
+SRCDIRS += src ports/nrf52
 SRCS += $(foreach dir, $(SRCDIRS), $(shell find $(dir) -type f -regex ".*\.c"))
 
 include ports/nrf52/sdk.mk

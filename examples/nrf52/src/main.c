@@ -1,14 +1,16 @@
-#include "boards.h"
-#include "nrf_delay.h"
+#include "sys.h"
+#include "sleep.h"
+#include "led.h"
 
 int main(void)
 {
-	bsp_board_init(BSP_INIT_LEDS);
+	sys_init();
+
+	led_t status_led;
+	led_init(&status_led, 0);
 
 	while (1) {
-		for (int i = 0; i < LEDS_NUMBER; i++) {
-			bsp_board_led_invert(i);
-			nrf_delay_ms(500);
-		}
+		led_toggle(&status_led);
+		sleep_ms(500);
 	}
 }
