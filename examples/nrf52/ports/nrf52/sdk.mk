@@ -96,3 +96,8 @@ $(ASM_STARTUP_OBJ): $(ASM_STARTUP_SRC)
 		$(addprefix -D, $(DEFS)) \
 		$(addprefix -I, $(INCS)) \
 		$(CFLAGS)
+
+sdk_config: SDK_CONFIG_FILE := ports/nrf52/sdk_config.h
+sdk_config: CMSIS_CONFIG_TOOL := $(SDK_ROOT)/external_tools/cmsisconfig/CMSIS_Configuration_Wizard.jar
+sdk_config:
+	java -jar $(CMSIS_CONFIG_TOOL) $(SDK_CONFIG_FILE)
