@@ -1,5 +1,5 @@
-#ifndef REDBEAR_NANO2_H
-#define REDBEAR_NANO2_H
+#ifndef REDBEAR_H
+#define REDBEAR_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -25,4 +25,4 @@ extern "C" {
 }
 #endif
 
-#endif // REDBEAR_NANO2_H
+#endif /* REDBEAR_H */
