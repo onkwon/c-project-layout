@@ -10,6 +10,8 @@ the example.
 3. `make nrf52`
 
 ### esp32
-esp32-devkit is used for the example.
+[ESP32 DevKitC](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/hw-reference/modules-and-boards-previous.html#esp32-core-board-v2-esp32-devkitc) is used for the example.
 
-`make esp32`
+1. Follow [the esp-idf installation
+   guide](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/#installation-step-by-step)
+2. `make esp32`

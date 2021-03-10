@@ -8,7 +8,8 @@ OUTPUT := $(OUTELF)_result
 
 CROSS_COMPILE ?= xtensa-esp32-elf
 
-SDK_ROOT := external/esp-idf
+IDF_PATH ?= external/esp-idf
+SDK_ROOT := $(IDF_PATH)
 PORT_ROOT := ports/esp-idf
 
 include ports/esp-idf/sdk.mk
