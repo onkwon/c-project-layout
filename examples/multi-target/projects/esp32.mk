@@ -1,5 +1,4 @@
 SRCDIRS += src ports/freertos
-SRCS += $(foreach dir, $(SRCDIRS), $(shell find $(dir) -type f -regex ".*\.c"))
 INCS += include
 
 PREREQUISITES += $(OUTDIR)/include/sdkconfig.h

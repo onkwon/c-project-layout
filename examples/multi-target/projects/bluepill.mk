@@ -1,14 +1,18 @@
-SRCDIRS += src ports/nrf52
+SRCDIRS += \
+	src \
+	ports/stm32/bluepill/Core/Src \
+	ports/freertos \
+
 INCS += \
-	ports/nrf52 \
+	ports/stm32/bluepill/Core/Inc \
 	include \
-	src
+	src \
 
 CROSS_COMPILE ?= arm-none-eabi
 
-SDK_ROOT := external/nRF5_SDK_17.0.2_d674dde
+SDK_ROOT := ports/stm32/bluepill
 
-include ports/nrf52/sdk.mk
+include ports/stm32/bluepill/sdk.mk
 
 .PHONY: flash erase gdbserver sdk_config
 flash: $(OUTHEX)

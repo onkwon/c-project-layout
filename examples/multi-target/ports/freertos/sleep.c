@@ -1,7 +1,7 @@
 #include "sleep.h"
 
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
+#include "FreeRTOS.h"
+#include "task.h"
 
 void sleep_ms(unsigned int msec)
 {

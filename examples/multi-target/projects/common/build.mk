@@ -40,6 +40,7 @@ OUTPUT ?= $(OUTELF) $(OUTLIB) $(OUTHEX) $(OUTBIN) $(OUTDEF) $(OUTSRC) $(OUTINC) 
 -include projects/$(PROJECT).mk
 include projects/common/toolchain.mk
 
+SRCS += $(foreach dir, $(SRCDIRS), $(shell find $(dir) -type f -regex ".*\.c"))
 OBJS += $(addprefix $(OUTDIR)/, $(SRCS:.c=.o))
 DEPS += $(OBJS:.o=.d)
 
