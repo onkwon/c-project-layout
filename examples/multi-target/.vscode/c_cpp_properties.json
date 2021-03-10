@@ -13,7 +13,6 @@
                 "/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/System/Library/Frameworks"
             ],
             "compilerPath": "/usr/local/opt/llvm/bin/clang",
-            //"compilerPath": "${env:GNU_GCC}/bin/arm-none-eabi-gcc",
             "cStandard": "c99",
             "cppStandard": "c++17",
             "intelliSenseMode": "clang-x64"

@@ -1,7 +1,0 @@
-PROJECT_NAME := $(PLATFORM_PROJECT_NAME)
-ifeq ($(PLATFORM_BUILD_DIR),)
-	PLATFORM_BUILD_DIR := build
-endif
-BUILD_DIR_BASE = $(PLATFORM_BUILD_DIR)
-
-include $(IDF_PATH)/make/project.mk
