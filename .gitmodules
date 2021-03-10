@@ -1,0 +1,3 @@
+[submodule "examples/esp32/external/esp-idf"]
+	path = examples/esp32/external/esp-idf
+	url = https://github.com/espressif/esp-idf.git
