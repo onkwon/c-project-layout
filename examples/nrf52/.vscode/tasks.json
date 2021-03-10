@@ -6,7 +6,7 @@
         {
             "label": "build",
             "type": "shell",
-            "command": "CROSS_COMPILE=arm-none-eabi make",
+            "command": "make",
             "problemMatcher": [],
             "group": {
                 "kind": "build",
