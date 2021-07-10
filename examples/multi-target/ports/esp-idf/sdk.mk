@@ -8,7 +8,8 @@ CFLAGS += \
 	  -Wno-error=sign-conversion \
 	  -Wno-error=redundant-decls \
 	  -Wno-error=strict-prototypes \
-	  -Wno-error=undef
+	  -Wno-error=undef \
+	  -Wno-error=unused-variable \
 
 INCS += \
 	$(SDK_ROOT)/components/mbedtls/mbedtls/include \
@@ -33,6 +34,7 @@ INCS += \
 	$(SDK_ROOT)/components/esp_common/include \
 	$(SDK_ROOT)/components/esp_event/include \
 	$(SDK_ROOT)/components/freertos/include \
+	$(SDK_ROOT)/components/freertos/include/freertos \
 	$(SDK_ROOT)/components/freertos/port/xtensa/include \
 	$(SDK_ROOT)/components/heap/include \
 	$(SDK_ROOT)/components/tcpip_adapter/include \
@@ -45,6 +47,8 @@ INCS += \
 	$(SDK_ROOT)/components/spi_flash/include \
 	$(SDK_ROOT)/components/bootloader_support/include \
 	$(SDK_ROOT)/components/nvs_flash/include \
+	$(SDK_ROOT)/components/bt/include/esp32/include \
+	$(SDK_ROOT)/components/bt/host/bluedroid/api/include/api \
 	$(PORT_ROOT) \
 	$(PORT_ROOT)/sdk \
 	$(OUTDIR)/include \

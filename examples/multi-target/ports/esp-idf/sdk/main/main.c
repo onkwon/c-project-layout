@@ -9,6 +9,7 @@
 #define DEFAULT_TASK_STACK_SIZE				3072
 
 extern int main(void);
+extern void app_main(void);
 
 static void esp_init(void)
 {

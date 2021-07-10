@@ -1,5 +1,8 @@
 # C Project Layout
 
+Multi-target example can be found in
+[examples/multi-target](examples/multi-target).
+
 ## Directories
 ```
 .

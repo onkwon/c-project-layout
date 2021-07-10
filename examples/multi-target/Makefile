@@ -14,14 +14,14 @@ export BASEDIR
 export BUILDIR
 export Q
 
-include projects/common/version.mk
+include projects/version.mk
 
 STATIC_GOALS := cleanall test coverage
 goals := $(filter-out $(STATIC_GOALS), $(MAKECMDGOALS))
 
 .PHONY: build
 build:
-	$(Q)$(MAKE) -f projects/common/build.mk $(MAKECMDGOALS)
+	$(Q)$(MAKE) -f projects/rules.mk $(MAKECMDGOALS)
 $(goals): build
 	@:
 

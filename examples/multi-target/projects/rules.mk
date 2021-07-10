@@ -1,13 +1,13 @@
-goal := $(firstword $(MAKECMDGOALS))
+target-device := $(firstword $(MAKECMDGOALS))
 
-ifneq ($(goal),)
-ifneq ($(strip $(wildcard projects/$(goal).mk)),)
-$(MAKECMDGOALS): build-goal
+ifneq ($(target-device),)
+ifneq ($(strip $(wildcard projects/devices/$(target-device).mk)),)
+$(MAKECMDGOALS): build-target
 	@:
-.PHONY: build-goal
-build-goal:
-	$(Q)PROJECT=$(goal) $(MAKE) -f projects/common/build.mk \
-		$(filter-out $(goal), $(MAKECMDGOALS))
+.PHONY: build-target
+build-target:
+	$(Q)PROJECT=$(target-device) $(MAKE) -f projects/rules.mk \
+		$(filter-out $(target-device), $(MAKECMDGOALS))
 done := 1
 endif
 endif
@@ -19,6 +19,7 @@ PROJECT := $(DEFAULT_PROJECT)
 endif
 
 DEFS += \
+	$(PROJECT) \
 	BUILD_DATE=$(BUILD_DATE) \
 	VERSION_TAG=$(VERSION_TAG) \
 	VERSION=$(VERSION)
@@ -37,8 +38,8 @@ OUTINC := $(OUTDIR)/includes.txt
 OUTPUT ?= $(OUTELF) $(OUTLIB) $(OUTHEX) $(OUTBIN) $(OUTDEF) $(OUTSRC) $(OUTINC) \
 	  $(OUTELF).size $(OUTELF).dump $(OUTELF).lst $(OUTELF).sym
 
--include projects/$(PROJECT).mk
-include projects/common/toolchain.mk
+-include projects/devices/$(PROJECT).mk
+include projects/toolchain.mk
 
 SRCS += $(foreach dir, $(SRCDIRS), $(shell find $(dir) -type f -regex ".*\.c"))
 OBJS += $(addprefix $(OUTDIR)/, $(SRCS:.c=.o))
