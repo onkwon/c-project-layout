@@ -16,7 +16,7 @@ the example.
    guide](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/#installation-step-by-step)
 2. `make esp32`
 
-## stm32
+### stm32
 [Blue Pill](https://stm32-base.org/boards/STM32F103C8T6-Blue-Pill.html) is used
 for the example.
 
