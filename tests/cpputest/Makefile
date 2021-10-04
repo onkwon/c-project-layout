@@ -1,5 +1,6 @@
 export CPPUTEST_HOME = cpputest
 export BUILDIR ?= build
+export PRJ_BASE ?= ../..
 
 TESTS := $(shell find runners -type f -regex ".*\.mk")
 

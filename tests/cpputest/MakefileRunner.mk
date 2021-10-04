@@ -49,6 +49,8 @@ export CPPUTEST_WARNINGFLAGS = \
 	\
 	-Wno-error=switch-enum \
 	-Wno-error=aggregate-return \
+	-Wno-error=suggest-override \
+	-Wno-error=suggest-destructor-override \
 
 #-Wredundant-decls -Wswitch-enum
 
