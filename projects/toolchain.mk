@@ -18,6 +18,7 @@ MY_CFLAGS ?= \
 	-fno-common \
 	-ffunction-sections \
 	-fdata-sections \
+	-flto \
 	-Os
 	#-fstack-usage
 	#-fno-short-enums
@@ -70,10 +71,10 @@ MY_WARNING_FLAGS ?= \
 
 ## Linker options
 MY_LDFLAGS ?= \
+	-flto \
 	-Wl,--gc-sections \
 	-Wl,--print-memory-usage
 	#--print-gc-sections
-	#-flto # it increases stack usage and removes some debug info
 	#-specs=nano.specs
 
 ## Archiver options
