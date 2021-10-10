@@ -4,6 +4,7 @@ SRCS += \
 	external/printf/printf.c \
 	ports/stm32/bluepill/bsp.c \
 	ports/stm32/bluepill/console.c \
+	ports/stm32/bluepill/freertos.c \
 	external/cmsis_device_f1/Source/Templates/system_stm32f1xx.c \
 	external/stm32f1xx_hal_driver/Src/stm32f1xx_hal.c \
 	external/stm32f1xx_hal_driver/Src/stm32f1xx_hal_cortex.c \
@@ -40,6 +41,7 @@ CFLAGS += \
 	-Wno-error=float-equal \
 	-Wno-error=sign-conversion \
 	-Wno-error=cast-qual \
+	-Wno-error=c++-compat \
 
 LDFLAGS += \
 	-mcpu=cortex-m3 \

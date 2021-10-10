@@ -46,14 +46,9 @@ static void RCC_Init(void)
 	HAL_RCC_ClockConfig(&clkinitstruct, FLASH_LATENCY_2);
 }
 
-extern void SysTick_Handler(void);
-void SysTick_Handler(void)
-{
-}
-
 void bsp_init(void)
 {
 	HAL_Init();
 	RCC_Init();
-	HAL_InitTick(0xf);
+	HAL_InitTick(2);
 }

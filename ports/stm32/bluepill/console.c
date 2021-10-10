@@ -45,7 +45,7 @@ static void USART1_Init(void)
 		__builtin_trap();
 	}
 
-	HAL_NVIC_SetPriority(USART1_IRQn, 0, 1);
+	HAL_NVIC_SetPriority(USART1_IRQn, 0, 0);
 	HAL_NVIC_EnableIRQ(USART1_IRQn);
 
 }
