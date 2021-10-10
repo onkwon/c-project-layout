@@ -8,8 +8,8 @@
 #define configUSE_PREEMPTION			1
 #define configCPU_CLOCK_HZ			((unsigned long )72000000)
 #define configTICK_RATE_HZ			((TickType_t )1000)
-#define configTOTAL_HEAP_SIZE			((size_t)(8 * 1024))
-#define configMINIMAL_STACK_SIZE		512
+#define configTOTAL_HEAP_SIZE			((size_t)(4 * 1024))
+#define configMINIMAL_STACK_SIZE		128
 #define configMAX_TASK_NAME_LEN			16
 
 #define configPRIO_BITS				3

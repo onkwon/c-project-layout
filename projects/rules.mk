@@ -2,22 +2,12 @@ include projects/version.mk
 include projects/toolchain.mk
 
 OUTCOM := $(BUILDIR)/$(PROJECT)_$(VERSION_TAG)
-OUTPUT := $(OUTCOM).bin $(OUTCOM).hex $(OUTCOM).sha256 \
+OUTPUT := $(BUILDIR)/sources.txt $(BUILDIR)/includes.txt $(BUILDIR)/defines.txt \
+	  $(OUTCOM).bin $(OUTCOM).hex $(OUTCOM).sha256 \
 	  $(OUTCOM).size $(OUTCOM).lst $(OUTCOM).sym $(OUTCOM).dump \
-	  $(BUILDIR)/sources.txt $(BUILDIR)/includes.txt $(BUILDIR)/defines.txt
 
 all: $(OUTPUT)
 	$(Q)$(SZ) -t --common $(sort $(OBJS))
-
-$(BUILDIR)/sources.txt: $(OUTCOM)
-	$(info generating  $@)
-	$(Q)echo $(sort $(SRCS)) | tr ' ' '\n' > $@
-$(BUILDIR)/includes.txt: $(OUTCOM)
-	$(info generating  $@)
-	$(Q)echo $(subst -I,,$(sort $(INCS))) | tr ' ' '\n' > $@
-$(BUILDIR)/defines.txt: $(OUTCOM)
-	$(info generating  $@)
-	$(Q)echo $(subst -I,,$(sort $(DEFS))) | tr ' ' '\n' > $@
 
 $(OUTCOM).size: $(OUTCOM)
 	$(info generating  $@)
@@ -68,6 +58,18 @@ $(BUILDIR)/%.o: %.s $(MAKEFILE_LIST)
 		$(addprefix -D, $(DEFS)) \
 		$(addprefix -I, $(INCS)) \
 		$(CFLAGS)
+
+$(BUILDIR)/sources.txt: $(BUILDIR)
+	$(info generating  $@)
+	$(Q)echo $(sort $(SRCS)) | tr ' ' '\n' > $@
+$(BUILDIR)/includes.txt: $(BUILDIR)
+	$(info generating  $@)
+	$(Q)echo $(subst -I,,$(sort $(INCS))) | tr ' ' '\n' > $@
+$(BUILDIR)/defines.txt: $(BUILDIR)
+	$(info generating  $@)
+	$(Q)echo $(subst -I,,$(sort $(DEFS))) | tr ' ' '\n' > $@
+$(BUILDIR):
+	@mkdir -p $@
 
 ifneq ($(MAKECMDGOALS), clean)
 ifneq ($(MAKECMDGOALS), depend)
