@@ -1,3 +1,5 @@
+include ports/stm32/bluepill/target.mk
+
 SRCS += src/main.c
 INCS += include
 
@@ -8,5 +10,8 @@ DEFS += \
 	VERSION_TAG=$(VERSION_TAG) \
 	VERSION=$(VERSION)
 
-OBJS += $(addprefix $(BUILDIR)/, $(SRCS:.c=.o))
+OBJS += $(addprefix $(BUILDIR)/, $(ASMS:.s=.o)) \
+	$(addprefix $(BUILDIR)/, $(SRCS:.c=.o))
 DEPS += $(OBJS:.o=.d)
+
+LIBS +=

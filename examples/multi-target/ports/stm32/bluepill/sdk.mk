@@ -51,7 +51,7 @@ CFLAGS += \
 	-Wno-error=redundant-decls \
 
 LDFLAGS += \
-	-mcpu=cortex-m4 \
+	-mcpu=cortex-m3 \
 	-mthumb \
 	-mabi=aapcs \
 	--specs=nano.specs
