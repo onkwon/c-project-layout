@@ -18,8 +18,9 @@ MY_CFLAGS ?= \
 	-fno-common \
 	-ffunction-sections \
 	-fdata-sections \
-	-Os
-	#-fstack-usage
+	-fstack-usage \
+	-Os \
+	#-flto
 	#-fno-short-enums
 	#-nostdlib
 
@@ -60,8 +61,7 @@ MY_WARNING_FLAGS ?= \
 	-Wstrict-overflow=5 \
 	-Wno-long-long \
 	-Wswitch-default \
-
-	#-Wstack-usage=$(STACK_LIMIT)
+	-Wstack-usage=$(STACK_LIMIT) \
 	#-Wformat-truncation=2
 	#-Wformat-overflow
 	#-Wabi=11 -Wlogical-op
@@ -70,10 +70,10 @@ MY_WARNING_FLAGS ?= \
 
 ## Linker options
 MY_LDFLAGS ?= \
+	-flto \
 	-Wl,--gc-sections \
-	-Wl,--print-memory-usage
+	-Wl,--print-memory-usage \
 	#--print-gc-sections
-	#-flto # it increases stack usage and removes some debug info
 	#-specs=nano.specs
 
 ## Archiver options

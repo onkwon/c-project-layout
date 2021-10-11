@@ -13,7 +13,7 @@ export BASEDIR
 export BUILDIR
 export Q
 
-include projects/template_sources.mk
+include projects/sources.mk
 include projects/rules.mk
 
 .PHONY: test
@@ -25,4 +25,5 @@ coverage:
 .PHONY: clean
 clean:
 	$(Q)$(MAKE) -C tests clean
-	$(Q)rm -rf $(BUILDIR)
+	$(Q)rm -f $(OBJS) $(DEPS) $(OBJS:.o=.su) \
+		$(OUTCOM) $(OUTCOM).map $(OUTPUT)
