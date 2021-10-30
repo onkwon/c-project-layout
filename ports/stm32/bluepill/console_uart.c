@@ -1,11 +1,15 @@
 #include "console.h"
 #include <stdint.h>
 #include "stm32f1xx_hal.h"
+#include "libmcu/ringbuf.h"
+#include "libmcu/assert.h"
 
 extern void USART1_IRQHandler(void);
 
 static UART_HandleTypeDef handle;
-static uint8_t rxbuf[128];
+static uint8_t rxbyte;
+static ringbuf_static_t rxbuf_handle;
+static uint8_t rxbuf[32];
 
 static void USART1_Port_Init(void)
 {
@@ -20,6 +24,7 @@ static void USART1_Port_Init(void)
 	HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
 	GPIO_InitStruct.Pin = GPIO_PIN_10;
+	GPIO_InitStruct.Mode = GPIO_MODE_INPUT,
 	HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 }
 
@@ -41,19 +46,19 @@ static void USART1_Init(void)
 		__builtin_trap();
 	}
 
-	if (HAL_UART_Receive_IT(&handle, rxbuf, sizeof(rxbuf)) != HAL_OK) {
-		__builtin_trap();
-	}
-
-	HAL_NVIC_SetPriority(USART1_IRQn, 0, 0);
+	HAL_NVIC_SetPriority(USART1_IRQn, 0, 1);
 	HAL_NVIC_EnableIRQ(USART1_IRQn);
 
+	if (HAL_UART_Receive_IT(&handle, &rxbyte, sizeof(rxbyte)) != HAL_OK) {
+		__builtin_trap();
+	}
 }
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
 	if (huart == &handle) {
-		HAL_UART_Receive_IT(&handle, rxbuf, sizeof(rxbuf));
+		ringbuf_write(&rxbuf_handle, &rxbyte, sizeof(rxbyte));
+		HAL_UART_Receive_IT(&handle, &rxbyte, sizeof(rxbyte));
 	}
 }
 
@@ -64,20 +69,27 @@ void USART1_IRQHandler(void)
 
 size_t console_read(void *buf, size_t bufsize)
 {
-	(void)buf;
-	(void)bufsize;
-	return 0;
+	return ringbuf_read(&rxbuf_handle, 0, buf, bufsize);
 }
 
 size_t console_write(const void *data, size_t datasize)
 {
-	HAL_UART_Transmit(&handle, (uint8_t *)data, (uint16_t)datasize, HAL_MAX_DELAY);
+	union {
+		const void *original;
+		uint8_t *const_discarded;
+	} t = { data, };
+
+	HAL_UART_Transmit(&handle,
+			t.const_discarded, (uint16_t)datasize, HAL_MAX_DELAY);
 
 	return datasize;
 }
 
 void console_init(void)
 {
+	bool ok = ringbuf_create_static(&rxbuf_handle, rxbuf, sizeof(rxbuf));
+	assert(ok);
+
 	USART1_Init();
 }
 

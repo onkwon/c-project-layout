@@ -8,6 +8,9 @@ void vApplicationStackOverflowHook(TaskHandle_t pxTask, char *pcTaskName)
 	(void)pcTaskName;
 
 	__builtin_trap();
+
+	while (1) {
+	}
 }
 
 #if (configUSE_IDLE_HOOK == 1)

@@ -10,5 +10,5 @@ VERSION_PATCH := $(strip $(word 3, $(version-tmp)))
 export VERSION
 export VERSION_TAG
 
-BUILD_DATE=\""$(shell date +"%X%Z%F")"\"
+BUILD_DATE=\""$(shell date +"%FT%X%z")"\"
 export BUILD_DATE

@@ -25,10 +25,17 @@ SRCS += \
 	external/printf/printf.c \
 	\
 	ports/stm32/bluepill/bsp.c \
-	ports/stm32/bluepill/console_uart.c \
+	ports/stm32/bluepill/console_cdc.c \
 	\
 	ports/stm32/bluepill/freertos.c \
 	\
+	ports/stm32/bluepill/tinyusb.c \
+	external/tinyusb/src/portable/st/stm32_fsdev/dcd_stm32_fsdev.c \
+	\
+	$(LIBMCU_ROOT)/ports/freertos/pthread_mutex.c \
+	$(LIBMCU_ROOT)/ports/freertos/pthread.c \
+	\
+	ports/stm32/bluepill/usb_descriptors.c \
 	$(FREERTOS_SRCS) \
 	$(TINYUSB_SRCS) \
 	$(LIBMCU_MODULES_SRCS) \
@@ -53,6 +60,9 @@ DEFS += \
 	HSE_VALUE=8000000U \
 	\
 	CFG_TUSB_MCU=OPT_MCU_STM32F1 \
+	\
+	_POSIX_TIMEOUTS \
+	_POSIX_TIMERS \
 
 CROSS_COMPILE ?= arm-none-eabi
 
