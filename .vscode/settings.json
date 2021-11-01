@@ -1,0 +1,11 @@
+{
+	"terminal.integrated.shell.windows": "c:\\msys64\\usr\\bin\\bash.exe",
+	"terminal.integrated.shellArgs.windows": [
+		"--login"
+	],
+	"terminal.integrated.env.windows": {
+		"CHERE_INVOKING": "1",
+		"MSYSTEM": "MINGW64",
+		"MSYS2_PATH_TYPE": "inherit"
+	}
+}
